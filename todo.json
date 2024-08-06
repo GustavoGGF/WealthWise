@@ -1,0 +1,10 @@
+{
+  "WealthWise": {
+    "FrontEnd": "VueJS",
+    "BackEnd": "Ruby on Rails",
+    "Database": "PostgreSQL",
+    "App's": "Power BI",
+    "Tasks": ["Design", "Development", "Testing", "Deployment"],
+    "Estudy": ["Circuit breaker", "Operações que esta sendo feito"]
+  }
+}
