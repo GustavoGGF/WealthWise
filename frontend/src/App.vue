@@ -1,13 +1,13 @@
-<script setup>
-import Login from './components/Login.vue'
-</script>
-
-<template >
-  <div class="main"><div class="position-absolute top-50 start-50 translate-middle"><Login /></div></div>
+<template>
+  <div class="main">
+    <router-view />
+  </div>
 </template>
 
+<script></script>
+
 <style scoped>
-.main{
+.main {
   background-color: var(--black-theme);
   width: 100%;
 }

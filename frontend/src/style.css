@@ -1,5 +1,5 @@
 :root {
-  --black-theme: #201b2c;
+  --black-theme: #212529;
   --pale-blue: #f8f9fd;
   background-color: var(--black-theme);
 }

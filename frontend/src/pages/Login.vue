@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container position-absolute top-50 start-50 translate-middle">
     <div class="heading">Sign In</div>
     <form @submit.prevent="submitForm" class="form">
       <div class="form-floating mb-3">
@@ -13,24 +13,39 @@
       <input class="login-button" type="submit" value="Sign In" />
     </form>
   </div>
+  <router-view></router-view>
 </template>
 
 <script setup>
+// Imports
 import { reactive } from "vue";
 import "../assets/styles/bootstrap-5.3.3-dist/css/bootstrap.css";
 import axios from "axios";
+import { useRouter } from "vue-router";
+
+// Criação de Constantes
+const router = useRouter();
 
 const formData = reactive({
   name: "",
   pass: "",
 });
 
+// Enviando as credenciais para o backend
 const submitForm = () => {
   axios
-    .post("http://localhost:3000/login", formData)
+    .post("http://localhost:3000/login", formData, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
     .then((response) => {
       console.log(response.data);
-      // Redirecionar para a página de dashboard
+
+      if (response.data.success) {
+        // Redirecionar para a página "Home"
+        return router.push({ name: "Home Page" });
+      }
     })
     .catch((error) => {
       console.error(error);
