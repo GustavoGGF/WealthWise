@@ -1,5 +1,61 @@
 :root {
   --black-theme: #212529;
   --pale-blue: #f8f9fd;
-  background-color: var(--black-theme);
+  --bootstrap-green: #28a745;
+  --black: #000000;
+  --dark-gray: #252525;
+  --charcoal-gray: #353535;
+}
+
+/* Reset básico */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif; /* Defina a fonte padrão se necessário */
+  line-height: 1.5; /* Defina a altura da linha padrão */
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden; /* Evita barras de rolagem horizontais inesperadas */
+  background-color: var(--black-theme) !important;
+}
+
+a {
+  text-decoration: none; /* Remove sublinhado dos links */
+  color: inherit; /* Herda a cor do texto dos elementos pais */
+}
+
+ul,
+ol {
+  list-style: none; /* Remove os marcadores e números das listas */
+}
+
+table {
+  border-collapse: collapse; /* Remove espaçamento entre as bordas das células */
+  border-spacing: 0; /* Remove espaçamento entre as bordas das células */
+}
+
+img {
+  max-width: 100%; /* Garante que as imagens não excedam o tamanho do contêiner */
+  height: auto; /* Mantém a proporção da imagem */
+}
+
+button {
+  background: none; /* Remove o fundo padrão do botão */
+  border: none; /* Remove a borda padrão do botão */
+  cursor: pointer; /* Define o cursor como pointer para botões */
+}
+
+input,
+textarea {
+  border: none; /* Remove a borda padrão dos campos de entrada */
+  outline: none; /* Remove o contorno padrão ao focar */
+}
+
+iframe {
+  border: 0; /* Remove a borda padrão dos iframes */
 }

@@ -1,5 +1,8 @@
+<!-- Html -->
 <template>
-  <div class="container position-absolute top-50 start-50 translate-middle">
+  <LoadingComponent v-if="canViewLoading" />
+  <div><img :src="Logo" class="img-fluid img_logo" alt="Logo" /></div>
+  <div v-if="!canViewLoading" class="container position-absolute top-50 start-50 translate-middle">
     <div class="heading">Sign In</div>
     <form @submit.prevent="submitForm" class="form">
       <div class="form-floating mb-3">
@@ -16,43 +19,63 @@
   <router-view></router-view>
 </template>
 
-<script setup>
+<!-- JS -->
+<script>
 // Imports
-import { reactive } from "vue";
-import "../assets/styles/bootstrap-5.3.3-dist/css/bootstrap.css";
 import axios from "axios";
+import { reactive, ref } from "vue";
 import { useRouter } from "vue-router";
+import "../assets/styles/bootstrap-5.3.3-dist/css/bootstrap.css";
+import Logo from "../assets/images/logos/logo.png";
+import LoadingComponent from "../components/LoadingComponent.vue";
 
-// Criação de Constantes
-const router = useRouter();
+export default {
+  name: "Login",
+  components: { LoadingComponent },
+  setup() {
+    const router = useRouter();
 
-const formData = reactive({
-  name: "",
-  pass: "",
-});
-
-// Enviando as credenciais para o backend
-const submitForm = () => {
-  axios
-    .post("http://localhost:3000/login", formData, {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-    .then((response) => {
-      console.log(response.data);
-
-      if (response.data.success) {
-        // Redirecionar para a página "Home"
-        return router.push({ name: "Home Page" });
-      }
-    })
-    .catch((error) => {
-      console.error(error);
+    const formData = reactive({
+      name: "",
+      pass: "",
     });
+
+    const canViewLoading = ref(false); // Definir como false inicialmente
+
+    const submitForm = async () => {
+      canViewLoading.value = true;
+
+      try {
+        const response = await axios.post("http://localhost:3000/login", formData, {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+
+        if (response.data.success) {
+          await router.push({ name: "Home Page" });
+        } else {
+          // Tratar o caso em que a resposta não é bem-sucedida
+          console.error("Login failed:", response.data.message || "Unknown error");
+        }
+      } catch (error) {
+        console.error("An error occurred:", error.message || error);
+      } finally {
+        canViewLoading.value = false;
+      }
+    };
+
+    return {
+      formData,
+      canViewLoading,
+      submitForm,
+      Logo,
+    };
+  },
 };
 </script>
 
+<!-- CSS -->
 <style scoped>
 /* From Uiverse.io by Smit-Prajapati */
 .container {
@@ -193,5 +216,10 @@ const submitForm = () => {
   text-decoration: none;
   color: #0099ff;
   font-size: 9px;
+}
+
+.img_logo {
+  margin: 1em;
+  width: 5em;
 }
 </style>

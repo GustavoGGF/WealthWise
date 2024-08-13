@@ -1,5 +1,5 @@
 <template>
-  <div class="main">
+  <div class="maindash">
     <router-view />
   </div>
 </template>
@@ -7,7 +7,7 @@
 <script></script>
 
 <style scoped>
-.main {
+.maindash {
   background-color: var(--black-theme);
   width: 100%;
 }

@@ -4,8 +4,11 @@ import HomePage from "../pages/HomePage.vue";
 
 // Rotas
 const routes = [
+  // pagina de login
   { path: "/", component: Login, name: "Login Page" },
-  { path: "/login", component: Login, name: "Login Page" },
+  // Pagina de Login
+  { path: "/login", component: Login, name: "Login Page Alias" },
+  // Pagina Home
   { path: "/home", component: HomePage, name: "Home Page" },
 ];
 

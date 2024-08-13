@@ -1,9 +1,11 @@
+# Constroladora das Paginas
 class PagesController < ApplicationController
   skip_before_action :verify_authenticity_token, only: [:login_post]
   # Get em login mostra renderiza a tela
   def login
-    render file: 'public/index.html'
+    return render file: 'public/index.html'
   end
+
   # Post de credencial
   def login_post
 
@@ -11,11 +13,11 @@ class PagesController < ApplicationController
     password = params[:password]
 
     return render json:{success:true, message:"Login Successful"}, status:200
-    # return redirect_to '/home'
   end
 
+  # Get em Home
   def home
-
+    # Renderiza o HTML
     render file: 'public/index.html'
   end
 end

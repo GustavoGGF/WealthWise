@@ -5,6 +5,6 @@
     "Database": "PostgreSQL",
     "App's": "Power BI",
     "Tasks": ["Design", "Development", "Testing", "Deployment"],
-    "Estudy": ["Circuit breaker", "Operações que esta sendo feito"]
+    "Estudy": ["Circuit breaker", "Operações que esta sendo feito", "package.json", "vite config"]
   }
 }

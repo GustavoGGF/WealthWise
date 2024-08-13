@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && rm -rf ../backend/public/*  && mv dist/* ../backend/public/",
+    "build": "vite build && rm -rf ../backend/public/*  && cp -R dist/* ../backend/public/ && rm -rf ./dist",
     "preview": "vite preview"
   },
   "dependencies": {
